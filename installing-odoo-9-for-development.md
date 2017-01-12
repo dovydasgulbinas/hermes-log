@@ -1,15 +1,22 @@
-# Get your linux username o which you do your development
+### Get your linux username o which you do your development
 whoami
 
 
 
-## My history
+### My history
 
 sudo apt-get update &&
 sudo apt-get -y upgrade
 
 ----
-(-)
+
+sudo apt-get install -y git libxml2-dev libjpeg-dev libldap2-dev libsasl2-dev libxslt1-dev
+sudo apt-get install -y python-dev libtiff5-dev node-clean-css node-less libpng-dev
+sudo apt-get install -y nodejs gdebi python-pip
+# you may not need it based on how nodejs installs
+sudo apt-get install -y npm
+
+
 sudo apt-get install -y postgresql postgresql-contrib
 sudo /usr/bin/pip install virtualenv
 
@@ -18,11 +25,10 @@ sudo apt-get install python-psycopg2
 sudo apt-get install libpq-dev
 
 
-sudo apt-get install -y git libxml2-dev libjpeg-dev libldap2-dev libsasl2-dev libxslt1-dev \
-python-dev libtiff5-dev node-clean-css node-less libpng-dev \
-npm nodejs gdebi python-pip
 
-## Installing wkhtmltox
+
+
+### Installing wkhtmltox
 
 cd /opt/ &&
 sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz &&
@@ -35,11 +41,16 @@ sudo ln -s /opt/wkhtmltox/bin/wkhtmltoimage /usr/bin
 sudo npm install -y -g less less-plugin-clean-css &&
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-## DB stuff
+
+### DB stuff
 
 sudo su - postgres
+
+// may need to use your machine user
+createuser --createdb --username postgres --no-superuser --no-createrole --pwprompt odoo
 >>> {{You epic password}}
 >>> exit
+ctrl + d
 
 ## Install odoo
 
@@ -50,7 +61,8 @@ sudo su - odoo -s /bin/bash
 cd /opt/odoo &&
 virtualenv ./_venv
 
-## ~~ Changed the line ~~
+### Changed the line
+
 #!/opt/odoo/_venv/bin/python
 
 source ./_venv/bin/activate &&
@@ -59,9 +71,34 @@ pip install ./
 
 pip install anybox.testing.openerp
 
----RUN SERVER---
+### modify odoo config
+
+- make sure you are using odoo user!
+
+sudo mkdir /etc/odoo
+
+sudo cp /opt/odoo/debian/openerp-server.conf /etc/odoo/odoo.conf &&
+sudo chmod 640 /etc/odoo/odoo.conf &&
+sudo chown odoo: /etc/odoo/odoo.conf
+
+
+[options]
+; This is the password that allows database operations:
+; admin_passwd = admin
+db_host = False
+db_port = False
+db_user = hermes
+db_password = False
+addons_path = /opt/odoo/clients/heximus-erp/addons,/opt/odoo/clients/general-erp/digi_addons,/opt/odoo/_venv/local/lib/python2.7/site-packages/openerp/addons,/opt/odoo/openerp/addons,/opt/odoo/addons
+
+
+-----
+
+## RUN SERVER
 
 #this will allow to RW to odoo user dir
+
+./openerp-server -c odoo.conf
 
 sudo groupadd dev-odoo
 sudo usermod -a -G dev-odoo hermes
@@ -95,7 +132,8 @@ openerp: database: default@default:default
 # then
 # make sure u add all paths in conf!!!
 
-# how to run
+## how to run
+
 change config user to your user
 
 sudo su - odoo -s /bin/bash
