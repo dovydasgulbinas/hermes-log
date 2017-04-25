@@ -111,6 +111,31 @@ Asmeninės patirties naudojimasis arba vieno pavyzdžio naudojimas, siekiant pan
 
 Antanas pasakė, kad 50% vyrų per savo gyvenimą susirgs vėžiu, Deividas atsakė: ""čia nesamonė mano giminėje niekas vėžiu nesirgo ir neserga!"
 
+#### 25. Raudona silkė (red herring)
+
+Dėmesio nukreipimas pakeičiant pokalbio temą
+
+26. Realizavimo sofizmas
+
+Abstrakcijos palaikymas realiu/konkrečiu objektu
+
+xx. Post Hoc, Ergo Propter Hoc (tai nutiko po to, todėl tai buvo pradėta to prieš tai)
+
+Teiginys, kad vėliau įvykęs įvykis yra pradėtas anksčiau įvykusio įvykio
+
+xx. Visko žinojimas (omniscience)
+
+Neteisingas teiginys, kuriame dažnai naudojami perdėti apibendrinimai kaip: visada, niekada, visi, viskas, pusė
+
+xx. Non Sequitur (iš to neseka)
+
+Išvados darymas iš prieš tai padarytu prielaidų, kurios nesusijusios su išvada
+
+xx. Pusė tiesos (Half Truth)
+
+Specialus žmogaus apgavimas sakant jam tiesą tačiau nuslepiant svarbią informaciją susijusią su šia tiesa
+
+
 ## References
 
 [list of falacies](https://en.wikipedia.org/wiki/List_of_fallacies)
